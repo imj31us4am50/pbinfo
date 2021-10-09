@@ -1,0 +1,43 @@
+#include <fstream>
+using namespace std;
+
+ifstream in("sortare_divizori.in");
+ofstream out("sortare_divizori.out");
+
+int div(int x)
+{
+    int d,nr=0;
+   for(d=1;d<=x;d++)
+    if (x%d==0)
+    nr++;
+    return nr;
+}
+int main()
+{
+  int n,v[1001],i,j,aux;
+  in>>n;
+  for (i=1;i<=n;i++)
+  in>>v[i];
+  for (i=1;i<=n;i++)
+   for (j=i+1;j<=n;j++)
+   {
+       if (div(v[i])<div(v[j]))
+       {
+           aux=v[i];
+           v[i]=v[j];
+           v[j]=aux;
+       }
+   }
+   for (i=1;i<n;i++)
+    if (div(v[i])==div(v[i+1]))
+     if (v[i]>v[i+1])
+      {
+          aux=v[i];
+          v[i]=v[i+1];
+          v[i+1]=aux;
+      }
+      else continue;
+  for (i=1;i<=n;i++)
+  out<<v[i]<<" ";
+  return 0;
+}
