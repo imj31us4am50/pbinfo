@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int ogl(int n)
+{
+    int c,og=0;
+    while (n)
+    {
+        c=n%10;
+        og=og*10+c;
+        n/=10;
+    }
+    return og;
+}
+int main()
+{
+    int n,v[101],i,val,ok=0;
+    cin>>n;
+    for (i=1;i<=n;i++)
+        cin>>v[i];
+    val=ogl(v[1]);
+    for (i=1;i<=n;i++)
+    if (v[i]==val)
+    ok=1;
+    if (ok==1)
+    cout<<"DA";
+    else cout<<"NU";
+    return 0;
+}
