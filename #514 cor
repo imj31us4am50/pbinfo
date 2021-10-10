@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int cmmdc(int a,int b)
+{
+    while (a!=b)
+    if (a>b)
+    a=a-b;
+    else b=b-a;
+    return a;
+}
+int main ()
+{
+   int n ,v[1001],p[1001],i,j,k=1,nr=0,aux;
+   cin>>n;
+   for (i=1;i<=n;i++) 
+   cin>>v[i];
+   for (i=1;i<=n;i++)
+   {
+       if(cmmdc(v[i],v[n])==1)
+       {
+       p[k]=v[i];
+       k++; nr++;
+       }
+   }
+   for (i=1;i<=nr;i++)
+    for (j=i+1;j<=nr;j++)
+     if (p[i]<p[j])
+     {
+         aux=p[i];
+         p[i]=p[j];
+         p[j]=aux;
+     }
+    for (i=1;i<=nr;i++)
+    cout<<p[i]<<" ";
+    return 0;
+}
