@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n,v[1001],i,j,aux,pma,pmi,max=0,min=1000;
+    cin>>n;
+    for (i=1;i<=n;i++)
+    {
+     cin>>v[i];
+     if (v[i]>max)
+     {
+         max=v[i];
+         pma=i;
+     }
+     if (v[i]<min)
+     {
+         min=v[i];
+         pmi=i;
+     }
+    }
+    if (pma>pmi)
+      for (i=pmi;i<pma;i++)
+      {
+        for (j=i+1;j<=pma;j++)
+         if (v[i]>v[j])
+         {
+             aux=v[i];
+             v[i]=v[j];
+             v[j]=aux;
+         }
+      }
+         else
+    if (pma<pmi)
+      for (i=pma;i<pmi;i++)
+      {
+        for (j=i+1;j<=pmi;j++)
+         if (v[i]>v[j])
+         {
+             aux=v[i];
+             v[i]=v[j];
+             v[j]=aux;
+         } 
+      }
+    for (i=1;i<=n;i++)
+    cout<<v[i]<<" ";
+    return 0;
+}
